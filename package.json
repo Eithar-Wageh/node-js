@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-   "start": "node server.js"
+    "start": "node index.js"
   },
-  
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Secure Authentication Lab with Express and MongoDB",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",

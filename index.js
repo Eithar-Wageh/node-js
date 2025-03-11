@@ -12,13 +12,15 @@ dotenv.config();
 
 const app = express();
 
+
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("✅ MongoDB Connected Successfully 🚀"))
-  .catch((err) => console.log("❌ MongoDB Connection Error:", err));
+  .then(() => console.log("✅ MongoDB Atlas Connected Successfully 🚀"))
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -32,7 +34,6 @@ const limiter = rateLimit({
   max: 100,
 });
 app.use(limiter);
-
 const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
 const errorHandler = require("./middlewares/errorhandler");
@@ -41,11 +42,13 @@ app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/posts", postRoutes);
 app.use(errorHandler);
 
+
 app.get("/", (req, res) => {
-  res.send("Welcome to the Secure Auth Lab");
+  res.send("🚀 Welcome to the Secure Auth Lab");
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`✅ Server is running on port ${PORT} 🚀`);
 });
